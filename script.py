@@ -1,5 +1,4 @@
 from tool import processor, correlation, resampling, score
-from tool.tokenizer import koNLPy, kakao, base, subword, cv
 from tool.metric.sacreBLEU import SacreBLEU
 from tool.metric import nltkMetric
 from tool import ver
@@ -55,14 +54,48 @@ def tokenizers():
     sample = hypothesis.split('.')[0]
     
     # load tokenizers
-    mecab = koNLPy.KoNLPy('mecab')
-    kiwi = kakao.Kiwi()
-    khaiii = kakao.Khaiii()
-    char = base.Character()
-    jamo = cv.Jamo(jamo_split=True)
-    spm = subword.SPM()
-    
-    for tokenizer in [mecab, kiwi, khaiii, char, jamo, spm]:
+    tokenizers = []
+    try:
+        from tool.tokenizer import koNLPy
+        mecab = koNLPy.KoNLPy('mecab')
+        tokenizers.append(mecab)
+    except ImportError:
+        pass
+    try:
+        from tool.tokenizer import kakao
+        kiwi = kakao.Kiwi()
+        khaiii = kakao.Khaiii()
+        tokenizers.append(kiwi)
+        tokenizers.append(khaiii)
+    except ImportError:
+        pass
+    try:
+        from tool.tokenizer import base
+        char = base.Character()
+        tokenizers.append(char)
+    except ImportError:
+        pass
+    try:
+        from tool.tokenizer import koNLPy
+        mecab = koNLPy.KoNLPy('mecab')
+        tokenizers.append(mecab)
+    except ImportError:
+        pass
+    try:
+        from tool.tokenizer import cv
+        jamo = cv.Jamo(jamo_split=True)
+        tokenizers.append(jamo)
+    except ImportError:
+        pass
+    try:
+        from tool.tokenizer import subword
+        spm = subword.SPM()
+        tokenizers.append(spm)
+    except ImportError:
+        pass
+    if not tokenizers:
+        print("There is no tokenizer available.\n")
+    for tokenizer in tokenizers:
         print(f'{tokenizer.__class__.__name__}: {tokenizer.tokenize(sample)}', end='\n\n')
     
     return hypothesis, reference
