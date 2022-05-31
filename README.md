@@ -4,7 +4,7 @@
 [<img src="https://img.shields.io/badge/Kakao-FFCD00?style=flat-square&logo=Kakao&logoColor=black"/></a>](https://www.kakaoenterprise.com)
 <img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg"/></a>
 
-This repository provides datasets and codes for MT evaluation employed in the given publication, written by **Ahrii Kim (김아리)** and **Jinhyeon Kim (김진현)** and submitted at [Preprints.org](https://www.preprints.org/manuscript/202201.0018/v1) (1st ver.) and [HumEval 2022](https://openreview.net/forum?id=BWVeZdViVW5&referrer=%5BAuthor%20Console%5D(%2Fgroup%3Fid%3Daclweb.org%2FACL%2F2022%2FWorkshop%2FHumEval%2FAuthors%23your-submissions)) (final ver.).
+This repository provides datasets and codes for MT evaluation employed in the given publication, written by **Ahrii Kim (김아리)** and **Jinhyeon Kim (김진현)** and submitted at [Preprints.org](https://www.preprints.org/manuscript/202201.0018/v1) (1st ver.) and [HumEval 2022](https://aclanthology.org/2022.humeval-1.1/)) (final ver.).
 
 
 ## Abstract
@@ -99,12 +99,19 @@ $ bash tool/tokenizer.sh data/sample tsv "Ref Hyp" "Kkma Hannanum Okt Komoran Me
 
 
 ## Citation
-    @inproceedings{kor-sacrebleu22,
-        title={Vacillating Human Correlation of SacreBLEU in Unprotected Languages},
-        author={Kim, Ahrii and Kim, Jinhyeon},
-        booktitle={Proceedings of the Workshop on Human Evaluation of NLP Systems (HumEval)}
-        year={2022}
-    }
+    
+    @inproceedings{kim-kim-2022-vacillating,
+        title = "Vacillating Human Correlation of {S}acre{BLEU} in Unprotected Languages",
+        author = "Kim, Ahrii  and Kim, Jinhyeon",
+        booktitle = "Proceedings of the 2nd Workshop on Human Evaluation of NLP Systems (HumEval)",
+        month = may,
+        year = "2022",
+        address = "Dublin, Ireland",
+        publisher = "Association for Computational Linguistics",
+        url = "https://aclanthology.org/2022.humeval-1.1",
+        pages = "1--15",
+        abstract = "SacreBLEU, by incorporating a text normalizing step in the pipeline, has become a rising                automatic evaluation metric in recent MT studies. With agglutinative languages such as Korean, however, the                 lexical-level metric cannot provide a conceivable result without a customized pre-tokenization. This paper endeavors to ex- amine the influence of diversified tokenization schemes {--}word, morpheme, subword, character, and consonants {\&} vowels (CV){--} on the metric after its protective layer is peeled off.By performing meta-evaluation with manually- constructed into-Korean resources, our empirical study demonstrates that the human correlation of the surface-based metric and other homogeneous ones (as an extension) vacillates greatly by the token type. Moreover, the human correlation of the metric often deteriorates due to some tokenization, with CV one of its culprits. Guiding through the proper usage of tokenizers for the given metric,      we discover i) the feasibility of the character tokens and ii) the deficit of CV in the Korean MT evaluation.",
+        }
     
 ## License
 Apache License Version 2.0
